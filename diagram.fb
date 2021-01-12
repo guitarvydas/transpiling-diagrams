@@ -1,0 +1,19 @@
+parent ('yqBiCKyfxECIX-FCSyxT-1', 'yqBiCKyfxECIX-FCSyxT-0').
+parent ('yqBiCKyfxECIX-FCSyxT-4', 'yqBiCKyfxECIX-FCSyxT-1').
+arrow ('yqBiCKyfxECIX-FCSyxT-4').
+source ('yqBiCKyfxECIX-FCSyxT-4', 'yqBiCKyfxECIX-FCSyxT-2').
+target ('yqBiCKyfxECIX-FCSyxT-4', 'yqBiCKyfxECIX-FCSyxT-3').
+parent ('yqBiCKyfxECIX-FCSyxT-2', 'yqBiCKyfxECIX-FCSyxT-1').
+name ('yqBiCKyfxECIX-FCSyxT-2', 'Box 1').
+rect ('yqBiCKyfxECIX-FCSyxT-2').
+x ('yqBiCKyfxECIX-FCSyxT-2', '40').
+y ('yqBiCKyfxECIX-FCSyxT-2', '120').
+width ('yqBiCKyfxECIX-FCSyxT-2', '120').
+height ('yqBiCKyfxECIX-FCSyxT-2', '60').
+parent ('yqBiCKyfxECIX-FCSyxT-3', 'yqBiCKyfxECIX-FCSyxT-1').
+name ('yqBiCKyfxECIX-FCSyxT-3', 'Box 2').
+rect ('yqBiCKyfxECIX-FCSyxT-3').
+x ('yqBiCKyfxECIX-FCSyxT-3', '280').
+y ('yqBiCKyfxECIX-FCSyxT-3', '120').
+width ('yqBiCKyfxECIX-FCSyxT-3', '120').
+height ('yqBiCKyfxECIX-FCSyxT-3', '60').
