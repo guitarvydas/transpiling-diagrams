@@ -1,4 +1,13 @@
 #!/bin/bash
+
+# decode the drawing into simple.xml
+node decode.js simple.drawio > simple.xml
+
+# todo: node drawiotab simple.xml list
+# todo: node drawiotab simple.xml get '101' > 101.encoded
+
+exit
+
 cat factbase.js prologfb.js facts.js graphmodel.js main.js >temp.js
 node temp.js | sort > temp.pl
 gprolog --consult-file main.pl 2>temp-new.pl >temp-messages.txt
