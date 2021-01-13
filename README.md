@@ -1,6 +1,8 @@
 Title: README  
 Author:
 
+# Introduction #
+
 In this essay, I show the very basics of transpiling a diagram to code.
 
 I call this DaS - Diagrams as Syntax.
@@ -18,6 +20,8 @@ If it doesn't seem simple enough, I haven't done my job well.
 I am happy to answer questions.
 
 [See also, https://guitarvydas.github.io/2021/01/12/Transpiling-Diagrams-to-Code-101.html]
+
+# Appendix - Getting Started #
 
 1. Get the code https://github.com/guitarvydas/transpiling-diagrams
 2. git checkout 101
