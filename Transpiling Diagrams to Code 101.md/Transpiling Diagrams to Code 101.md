@@ -19,6 +19,8 @@ If it doesn't seem simple enough, I haven't done my job well.
 
 I am happy to answer questions.
 
+[See also, https://guitarvydas.github.io/2021/01/12/Transpiling-Diagrams-to-Code-101.html]
+
 ----
 
 # A Simple Diagram #
@@ -427,9 +429,13 @@ There's nothing new here - just a combination of already-existing technologies.
 
 # Appendix - Getting Started #
 
-0. Get the code …
-1. Get Ohm-js from https://github.com/harc/ohm and install it alongside of this code.
-2. Examine and run run.bash.
+1. Get the code https://github.com/guitarvydas/transpiling-diagrams
+2. git checkout 101
+3. See the essay in "Transpiling Diagrams to Code 101.md/Transpiling Diagrams to Code 101.md".
+4. Get Ohm-js from https://github.com/harc/ohm and put a copy of ohm.js alongside of this code.
+5. Examine and run run.bash.
+
+see also https://guitarvydas.github.io/2021/01/12/Transpiling-Diagrams-to-Code-101.html
 
 ----
 
