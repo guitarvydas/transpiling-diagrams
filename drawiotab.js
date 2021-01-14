@@ -4,7 +4,7 @@ XML {
   element = (compositeElement | leafElement)+ ws*
   leafElement = elementBeginEnd
   compositeElement = elementBegin content elementEnd
-  elementBeginEnd = "<" ws* attribute* "/" ">" ws*
+  elementBeginEnd = "<" id ws* attribute* "/" ">" ws*
   elementBegin = "<" id ws* attribute* ">" ws*
   elementEnd = "<" "/" id ">" ws*
   content = 
@@ -29,7 +29,8 @@ XML {
 }
 
 MXGraph <: XML {
-  MXGraph = element
+  MXFile = "<" "mxfile" attribute* ">" Diagram+ "<" "/" "mxfile" ">"
+  Diagram = "<" "diagram" attribute* ">" contentChar+ "<" "/" "diagram" ">"
 }
 `;
 
@@ -45,7 +46,7 @@ function main () {
 	console.log ("Ohm matching succeeded");
 	console.log ("command = " + command);
 	var semantics = mxParser.createSemantics ();
-	addListCommand (semantics);
+	addToJS (semantics);
     } else {
 	console.log ("Ohm matching failed");
     }

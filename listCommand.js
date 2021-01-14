@@ -2,7 +2,8 @@ function addListCommand (semantics) {
     semantics.addOperation (
 	'list',
 	{
-	    MXGraph: function (_1) {}, // element
+	    MXFile: function (_1, _2, _3s, _4, _5s, _6, _7, _8, _9) {}, // "<" "mxfile" attribute* ">" Diagram+ "<" "/" "mxfile" ">"
+	    Diagram: function (_1, _2, _3s, _4, _5s, _6, _7, _8, _9) {}, // "<" "diagram" attribute* ">" contentChar+ "<" "/" "diagram" ">"
 	    xml: function (_1s) {}, // element*
 	    element: function (_1s, _2s) {}, // ((compositeElement | leafElement)+ ws*
 	    leafElement: function (_1) {}, //(elementBeginEnd
