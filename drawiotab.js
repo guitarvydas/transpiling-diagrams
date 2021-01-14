@@ -44,8 +44,8 @@ function main () {
     if (result.succeeded ()) {
 	console.log ("Ohm matching succeeded");
 	console.log ("command = " + command);
-	// var semantics = ohmParser.createSemantics ();
-	// addListCommand (semantics);
+	var semantics = mxParser.createSemantics ();
+	addListCommand (semantics);
     } else {
 	console.log ("Ohm matching failed");
     }
