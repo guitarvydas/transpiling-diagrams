@@ -3,11 +3,13 @@ function addToJS (semantics) {
 	'toJS',
 	{
 	    MXFile: function (_1, _2, _3s, _4, _5s, _6, _7, _8, _9) { // "<" "mxfile" attribute* ">" Diagram+ "<" "/" "mxfile" ">"
+console.log ("MXFile");
 		return { attributes: _3s.toJS (), diagrams: _5s.toJS () }; },
 	    Diagram: function (_1, _2, _3s, _4, _5s, _6, _7, _8, _9) { // "<" "diagram" attribute* ">" contentChar+ "<" "/" "diagram" ">"
+console.log ("diagram");
 		return { element: _2.toJS(), attributes: _3s.toJS (), content: _5s.toJS ().join ('') }; },
 	    xml: function (_1s) { return _1s.toJS (); }, // element*
-	    element: function (_1s, _2s) { return _1s.toJS (); }, // (compositeElement | leafElement)+ ws*
+	    element: function (_1s, _2s) { console.log ("element"); return _1s.toJS (); }, // (compositeElement | leafElement)+ ws*
 	    leafElement: function (_1) { return _1.toJS (); }, // elementBeginEnd
 	    compositeElement: function (_1, _2, _3) { // elementBegin content elementEnd
 		return { element: _1.toJS (), content: _2.toJS () }; },

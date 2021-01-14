@@ -1,5 +1,9 @@
 var grammar = `
-XML {
+MXGraph {
+
+  MXFile = "<" "mxfile" attribute* ">" Diagram+ "<" "/" "mxfile" ">"
+  Diagram = "<" "diagram" attribute* ">" contentChar+ "<" "/" "diagram" ">"
+
   xml = element*
   element = (compositeElement | leafElement)+ ws*
   leafElement = elementBeginEnd
@@ -27,18 +31,12 @@ XML {
   ws = " " | "\\t" | "\\n"
 
 }
-
-MXGraph <: XML {
-  MXFile = "<" "mxfile" attribute* ">" Diagram+ "<" "/" "mxfile" ">"
-  Diagram = "<" "diagram" attribute* ">" contentChar+ "<" "/" "diagram" ">"
-}
 `;
 
 // npm install ohm-js
 function main () {
     var ohm = require ('ohm-js');
-    var ohmParserArray = ohm.grammars (grammar);
-    var mxParser = ohmParserArray ['MXGraph'];
+    var mxParser = ohm.grammar (grammar);
     var text = readFromStdin ();
     var result = mxParser.match (text);
     var command = process.argv [2];
@@ -47,7 +45,11 @@ function main () {
 	console.log ("command = " + command);
 	var semantics = mxParser.createSemantics ();
 	addToJS (semantics);
-	console.log (semantics (result).toJS ());
+	var js = semantics (result).toJS ();
+	console.log (js);
+	js.diagrams.forEach (diagram => {
+	    console.log (diagram.name);
+	});
     } else {
 	console.log ("Ohm matching failed");
     }
