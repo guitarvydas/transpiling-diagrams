@@ -3,8 +3,9 @@
 # decode the drawing into simple.xml
 node decode.js simple.drawio > simple.xml
 
-cat readstdin.js toJS.js drawiotab.js >temp.js
-node temp.js list <simple.xml
+cat readstdin.js getAttribute.js listCommand.js toJS.js drawiotab.js >temp.js
+cat readstdin.js cat.js >temp.cat.js
+node temp.js list <simple.xml | node temp.cat.js
 # todo: node drawiotab simple.xml list
 # todo: node drawiotab simple.xml get '101' > 101.encoded
 
