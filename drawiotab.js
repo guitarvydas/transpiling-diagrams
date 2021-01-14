@@ -47,9 +47,11 @@ function main () {
 	addToJS (semantics);
 	var js = semantics (result).toJS ();
 	js.diagrams.forEach (diagram => {
-	    console.log (diagram);
-	    console.log (diagram.attributes.map (a => { console.log (a); }));
-	    console.log (diagram.attributes.name);
+	    console.log (diagram.attributes.map (a => { 
+		if (a.name) {
+		    return `${a.name} ${a.data}`;
+		}
+	    }));
 	});
     } else {
 	console.log ("Ohm matching failed");
