@@ -4,7 +4,7 @@
 node decode.js simple.drawio > simple.xml
 
 cat readstdin.js drawiotab.js >temp.js
-node temp.js <simple.xml
+node temp.js list <simple.xml
 # todo: node drawiotab simple.xml list
 # todo: node drawiotab simple.xml get '101' > 101.encoded
 

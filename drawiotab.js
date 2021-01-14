@@ -1,4 +1,4 @@
-var xmlGrammar = `
+var grammar = `
 XML {
   xml = element*
   element = (compositeElement | leafElement)+ ws*
@@ -27,17 +27,25 @@ XML {
   ws = " " | "\\t" | "\\n"
 
 }
+
+MXGraph <: XML {
+  MXGraph = element
+}
 `;
 
 // npm install ohm-js
 function main () {
     var ohm = require ('ohm-js');
-    var ohmParser = ohm.grammar (xmlGrammar);
+    var ohmParserArray = ohm.grammars (grammar);
+    var mxParser = ohmParserArray ['MXGraph'];
     var text = readFromStdin ();
-    var result = ohmParser.match (text);
+    var result = mxParser.match (text);
+    var command = process.argv [2];
     if (result.succeeded ()) {
 	console.log ("Ohm matching succeeded");
-	var semantics = ohmParser.createSemantics ();
+	console.log ("command = " + command);
+	// var semantics = ohmParser.createSemantics ();
+	// addListCommand (semantics);
     } else {
 	console.log ("Ohm matching failed");
     }
