@@ -47,6 +47,7 @@ function main () {
 	console.log ("command = " + command);
 	var semantics = mxParser.createSemantics ();
 	addToJS (semantics);
+	console.log (semantics (result).toJS ());
     } else {
 	console.log ("Ohm matching failed");
     }

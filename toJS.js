@@ -7,7 +7,7 @@ function addToJS (semantics) {
 	    Diagram: function (_1, _2, _3s, _4, _5s, _6, _7, _8, _9) { // "<" "diagram" attribute* ">" contentChar+ "<" "/" "diagram" ">"
 		return { element: _2.toJS(), attributes: _3s.toJS (), content: _5s.toJS ().join ('') }; },
 	    xml: function (_1s) { return _1s.toJS (); }, // element*
-	    element: function (_1s, _2s) { return _1.toJS (); }, // (compositeElement | leafElement)+ ws*
+	    element: function (_1s, _2s) { return _1s.toJS (); }, // (compositeElement | leafElement)+ ws*
 	    leafElement: function (_1) { return _1.toJS (); }, // elementBeginEnd
 	    compositeElement: function (_1, _2, _3) { // elementBegin content elementEnd
 		return { element: _1.toJS (), content: _2.toJS () }; },
@@ -18,7 +18,7 @@ function addToJS (semantics) {
 		return { name: _2.toJS (), attributes:_4s.toJS () }; },
 	    elementEnd: function (_1, _2, _3, _4, _5s) { return _2.toJS (); }, // "<" "/" id ">" ws*
 	    content: function (_1, _2s) { // elementHead elementTail*
-		return (_1.toJS () + _2.toJS ().join ('')); },
+		return (_1.toJS () + _2s.toJS ().join ('')); },
 	    elementTail: function (_1, _2, _3s) { // &"<" element contentChar*
 		return { element: _2.toJS(), data: _3s.toJS ().join ('') }; },
 	    elementHead: function (_1s) { return _1s.toJS ().join (''); }, // contentChar*
