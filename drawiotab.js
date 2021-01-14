@@ -46,9 +46,10 @@ function main () {
 	var semantics = mxParser.createSemantics ();
 	addToJS (semantics);
 	var js = semantics (result).toJS ();
-	console.log (js);
 	js.diagrams.forEach (diagram => {
-	    console.log (diagram.name);
+	    console.log (diagram);
+	    console.log (diagram.attributes.map (a => { console.log (a); }));
+	    console.log (diagram.attributes.name);
 	});
     } else {
 	console.log ("Ohm matching failed");
