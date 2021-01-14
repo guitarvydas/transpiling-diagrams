@@ -34,27 +34,31 @@ MXGraph {
 `;
 
 // npm install ohm-js
-function main () {
+function parseMxGraph (text) {
     var ohm = require ('ohm-js');
     var mxParser = ohm.grammar (grammar);
-    var text = readFromStdin ();
     var result = mxParser.match (text);
-    var command = process.argv [2];
     if (result.succeeded ()) {
-	console.log ("Ohm matching succeeded");
-	console.log ("command = " + command);
 	var semantics = mxParser.createSemantics ();
 	addToJS (semantics);
-	var js = semantics (result).toJS ();
-	js.diagrams.forEach (diagram => {
-	    console.log (diagram.attributes.map (a => { 
-		if (a.name) {
-		    return `${a.name} ${a.data}`;
-		}
-	    }));
-	});
+	var mxgraph = semantics (result).toJS ();
+	return mxgraph;
     } else {
-	console.log ("Ohm matching failed");
+	console.log (mxParser.trace (text).toString ());
+	throw "Ohm matching failed";
+    }
+}
+
+function main () {
+    var command = process.argv [2];
+    var text = readFromStdin ();
+    var mxg = parseMxGraph (text);
+    if (command === 'list') {
+	var v = listDiagrams (mxg);
+	var s = JSON.stringify (v);
+	process.stdout.write (s);
+    } else {
+	console.log (`command ${command} not understood`);
     }
 }
 

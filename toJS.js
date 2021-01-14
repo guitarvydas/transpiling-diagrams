@@ -5,7 +5,7 @@ function addToJS (semantics) {
 	    MXFile: function (_1, _2, _3s, _4, _5s, _6, _7, _8, _9) { // "<" "mxfile" attribute* ">" Diagram+ "<" "/" "mxfile" ">"
 		return { attributes: _3s.toJS (), diagrams: _5s.toJS () }; },
 	    Diagram: function (_1, _2, _3s, _4, _5s, _6, _7, _8, _9) { // "<" "diagram" attribute* ">" contentChar+ "<" "/" "diagram" ">"
-		return { element: _2.toJS(), attributes: _3s.toJS (), content: _5s.toJS ().join ('') }; },
+		return { element: "diagram", attributes: _3s.toJS (), content: _5s.toJS ().join ('') }; },
 	    xml: function (_1s) { return _1s.toJS (); }, // element*
 	    element: function (_1s, _2s) { return _1s.toJS (); }, // (compositeElement | leafElement)+ ws*
 	    leafElement: function (_1) { return _1.toJS (); }, // elementBeginEnd
@@ -24,7 +24,7 @@ function addToJS (semantics) {
 	    elementHead: function (_1s) { return _1s.toJS ().join (''); }, // contentChar*
 	    contentChar: function (_1) { return _1.toJS(); }, // ~"<" any
 	    attribute: function (_1, _2, _3, _4s) { // id "=" string ws*
-		return { name: _1.toJS (), data: _3.toJS () }; },
+		return { name: _1.toJS (), value: _3.toJS () }; },
 	    id: function (_1, _2s) { return _1.toJS () + _2s.toJS ().join (''); }, // letter (letter | digit)*
 	    string: function (_1, _2s, _3) { return _2s.toJS ().join (''); }, // "\"" stringChar* "\""
 	    stringChar: function (_1) { return _1.toJS (); }, // escapedChar |  anyStringChar
