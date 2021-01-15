@@ -6,9 +6,11 @@ node decode.js simple.drawio > simple.xml
 cat readstdin.js getAttribute.js listCommand.js getCommand.js toJS.js drawiotab.js >temp.js
 cat readstdin.js cat.js >temp.cat.js
 cat readstdin.js uncompress.js >temp.uncompress.js
-node temp.js list <simple.xml | node temp.cat.js
-node temp.js getByTab 101 <simple.xml > 101.encoded
-node temp.uncompress.js <101.encoded
+# node temp.js list <simple.xml | node temp.cat.js
+
+#node temp.js getByTab 101 <simple.xml > 101.encoded
+#node temp.uncompress.js <101.encoded
+node temp.js getByTab 101 <simple.xml | node temp.uncompress.js
 
 exit
 
