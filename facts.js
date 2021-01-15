@@ -3,22 +3,26 @@ function createExistenceFact (element) {
 }
 
 function createParentFact (element) {
-    if (element.parent) {
-	addPrologFact ("parent", element.id, element.parent);
+    let a = element.attributes;
+    if (a.parent) {
+	addPrologFact ("parent", a.id, a.parent);
     }
 }
 
 function createNameFact (element) {
-    if (element.value) {
-	addPrologFact ("rectname", element.id, element.value);
+    let a = element.attributes;
+    if (a.value) {
+	addPrologFact ("rectname", a.id, a.value);
     }
 }
 
 function createArrowFact (element) {
+    let a = element.attributes;
     if (isEdge (element)) {
-	addPrologFact ("arrow", element.id, undefined);
-	addPrologFact ("source", element.id, element.source);
-	addPrologFact ("target", element.id, element.target);
+	addPrologFact ("arrow", a.id, undefined);
+	addPrologFact ("source", a.id, a.source);
+	addPrologFact ("target", a.id, a.target);
+	// we're not interested in arrow geometry - that's just for the drawing
     }
 }
 
@@ -33,12 +37,13 @@ function createRectFact (element) {
 
 function isEdge (e) {
     var result;
-    if (e.edge) {
-	result = (e.edge === "1");
-    } else if (e.vertex) {
-	result = (e.vertex === "0");
+    let a = element.attributes;
+    if (a.edge) {
+	result = (a.edge === "1");
+    } else if (a.vertex) {
+	result = (a.vertex === "0");
     } else {
-	result = (e.vertex !== undefined);
+	result = (a.vertex !== undefined);
     }
     return result;
 }
@@ -49,18 +54,20 @@ function isRect (e) {
 }
 
 function isVertex (e) {
-    return (e.vertex && e.vertex === "1");
+    let a = element.attributes;
+    return (a.vertex && a.vertex === "1");
 }
 
 function addGeometry (element) {
     var content = element.content;
     if (content) {
-	if (content.element === "mxGeometry") {
-	    var id = element.id;
-	    addPrologFactInt ("x", id, content.x);
-	    addPrologFactInt ("y", id, content.y);
-	    addPrologFactInt ("width", id, content.width);
-	    addPrologFactInt ("height", id, content.height);
+	var geometry = getElement (content, 'geometry');
+	if (geometry) {
+	    var id = getAttribute (element, 'id');
+	    addPrologFactInt ("x", id, getAttribute (geometry, 'x'));
+	    addPrologFactInt ("y", id, getAttribute (geometry, 'y'));
+	    addPrologFactInt ("width", id, getAttribute (geometry, 'width'));
+	    addPrologFactInt ("height", id, getAttribute (geometry, 'height'));
 	}
     }
 }

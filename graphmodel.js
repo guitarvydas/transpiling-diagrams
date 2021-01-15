@@ -2,8 +2,7 @@
 
 const graphModel = 
 { element: "mxGraphModel",
-  attributes:
-  [
+  attributes: {
       dx: 940,
       dy: 670,
       grid: 1,
@@ -19,7 +18,7 @@ const graphModel =
       pageHeight: 850,
       math: 0,
       shadow: 0
-  ],
+  },
   content:
   [
       { element: "root",

@@ -1,7 +1,7 @@
 function main () {
-    var graphicalObjects = graphModel.root;
+    var diagramObjects = getElement (graphModel.content, 'root').content;
     factbase = [];
-    graphicalObjects.forEach (element => {
+    diagramObjects.forEach (element => {
 	//createExistenceFact (element);
 	createParentFact (element);
 	createNameFact (element);
