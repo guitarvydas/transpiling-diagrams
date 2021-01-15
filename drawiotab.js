@@ -57,6 +57,11 @@ function main () {
 	var v = listDiagrams (mxg);
 	var s = JSON.stringify (v);
 	process.stdout.write (s);
+    } else if (command === 'getByTab') {
+	var tabName = process.argv [3];
+	var diagram = getDiagramByTabName (mxg, tabName);
+	var content = diagram.content;
+	process.stdout.write (content);
     } else {
 	console.log (`command ${command} not understood`);
     }
